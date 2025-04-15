@@ -11,12 +11,13 @@ class PersonalPage(BasePage):
         self.find_element(MainPageLocators.PERSONAL_ACCOUNT_BUTTON).click()
 
     @allure.step('Ввести email')
-    def send_email(self):
-        self.find_element(MainPageLocators.EMAIL_INPUT).send_keys(Data.EMAIL)
+    def send_email(self, email):
+        self.find_element(MainPageLocators.EMAIL_INPUT).send_keys(email)
 
     @allure.step('Ввести пароль')
-    def send_password(self):
-        self.find_element(MainPageLocators.PASSWORD_INPUT).send_keys(Data.PASSWORD)
+    @allure.step('Ввести пароль')
+    def send_password(self, password):
+        self.find_element(MainPageLocators.PASSWORD_INPUT).send_keys(password)
 
     @allure.step('Клик на кнопку "Войти"')
     def click_button_login(self):
@@ -24,9 +25,9 @@ class PersonalPage(BasePage):
         self.find_element(PersonalPageLocators.LOGIN_BUTTON).click()
 
     @allure.step('Авторизация')
-    def send_email_and_password_and_login(self):
-        self.send_email()
-        self.send_password()
+    def send_email_and_password_and_login(self, email, password):
+        self.send_email(email)
+        self.send_password(password)
         self.click_button_login()
         self.wait_for_load_element(MainPageLocators.PERSONAL_ACCOUNT_BUTTON)
 

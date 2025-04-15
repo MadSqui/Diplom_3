@@ -11,11 +11,11 @@ class TestPersonalAccount:
         assert personal_account.current_url() == Urls.LOGIN_PAGE
 
     @allure.title('Переход в раздел «История заказов»')
-    def test_go_to_order_history(self,driver):
+    def test_go_to_order_history(self, driver):
         personal_account = PersonalPage(driver)
         personal_account.open_url(Urls.BASE_URL)
         personal_account.click_personal_account()
-        personal_account.send_email_and_password_and_login()
+        personal_account.send_email_and_password_and_login("test@example.com", "password123")
         personal_account.click_personal_account()
         personal_account.click_history_order()
         assert personal_account.current_url() == Urls.ORDER_HISTORY
